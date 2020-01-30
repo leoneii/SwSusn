@@ -9,6 +9,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -16,29 +17,26 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AppSettings {
-   private AppSettings() throws FileNotFoundException, IOException {
-          
-       Properties props = new Properties();
-       props.load(new FileInputStream(new File("settings.ini")));
-      
-   }
-   // . .  
-   private Properties props;
 
-   private static AppSettings SINGLETON;
-   static {
-       try {
-           SINGLETON = new AppSettings();
-       } catch (IOException ex) {
-           Logger.getLogger(AppSettings.class.getName()).log(Level.SEVERE, null, ex);
-       }
+public class AppSettings {
+   
+          
+    public static Properties props = new Properties();
+      
+   private static void load () throws FileNotFoundException, IOException {
+      props.load(new FileInputStream(new File("settings.ini"))); 
+   }   
+   // . .  
+   private static void store () throws IOException {
+     props.store(new FileWriter("settings.ini"), "store to properties file");
    }
+
    
    // Извлечение объекта из коллекции
 // при отсутствии данных возвращается значение по умолчанию
-public static String getString(String key, String deflt) {
-   String str = SINGLETON.props.getProperty(key);
+public static String getString(String key, String deflt) throws IOException  {
+   load ();
+   String str = props.getProperty(key);
    if (str == null) {
       return deflt;
    } else {
@@ -47,8 +45,10 @@ public static String getString(String key, String deflt) {
 }
 
 // Для упрощения извлечения данных типа int
-public static int getInt(String key, int deflt) {
-   String str = SINGLETON.props.getProperty(key);
+public static int getInt(String key, int deflt) throws IOException {
+    
+   load ();
+   String str = props.getProperty(key);
    if (str == null) {
       return deflt;
    } else {
@@ -57,12 +57,13 @@ public static int getInt(String key, int deflt) {
 }
 
 // Добавление объекта в коллекцию
-public static void set(String key, String data) {
+public static void set(String key, String data) throws IOException  {
    // prevent null values. Hasmap allow them
    if (data == null) {
       throw new IllegalArgumentException();
    } else {
-      SINGLETON.props.setProperty(key, data);
+     props.setProperty(key, data);
+     store();
    }
  }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package swsusn;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,11 +18,11 @@ public class conn {
 	public static ResultSet resSet;
 	
 	// --------ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ--------
-	public static void Conn() throws ClassNotFoundException, SQLException 
+	public static void Conn() throws ClassNotFoundException, SQLException, IOException 
 	   {
 		   conn = null;
 		   Class.forName("org.sqlite.JDBC");
-		   conn = DriverManager.getConnection("jdbc:sqlite:TEST1.s3db");
+		   conn = DriverManager.getConnection("jdbc:sqlite:"+AppSettings.getString("dbname", "susn.ixdb"));
 		   
 		   System.out.println("База Подключена!");
 	   }
