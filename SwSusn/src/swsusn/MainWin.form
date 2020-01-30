@@ -137,7 +137,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jInternalFrame1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" pref="1233" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -149,7 +149,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jInternalFrame1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="383" pref="625" max="32767" attributes="0"/>
+                          <EmptySpace min="383" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
@@ -302,7 +302,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="776" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -324,7 +324,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="776" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -352,7 +352,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane2" pref="752" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane2" pref="154" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -409,7 +409,7 @@
                                       </Group>
                                       <Component id="jButton5" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="677" max="32767" attributes="0"/>
+                                  <EmptySpace pref="79" max="32767" attributes="0"/>
                                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -456,7 +456,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="147" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -478,7 +478,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="147" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -500,7 +500,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="147" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -526,7 +526,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="776" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
