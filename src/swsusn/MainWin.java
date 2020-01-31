@@ -8,9 +8,11 @@ package swsusn;
 import com.opencsv.CSVWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static swsusn.conn.resSet;
 
 /**
  *
@@ -607,20 +609,32 @@ public class MainWin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+                                                                            //экспорт cvs
         try {
             // TODO add your handling code here:
             String csv = swsusn.FileOS.saveFile("Выберите файл для экспорта", "csv","Файлы csv", jPanel1);
-            //Create record
-            try (CSVWriter writer = new CSVWriter(new FileWriter(csv))) {
+            //Create record 
+            
+            CSVWriter writer = new CSVWriter(new FileWriter(csv));
+            
+            ResultSet rs = conn.ReadDB("SELECT * FROM nomen;");
+            while (rs.next()){
+                
+                
                 //Create record
-                String [] record = "4,David,Miller,Australia,30".split(",");
+                String [] record = (rs.getString(1)+";"+rs.getString(2)+";"+rs.getString(3)+";"+rs.getString(4)+";"+rs.getString(5)+";").split(";");
+                
                 //Write the record to file
                 writer.writeNext(record);
                 //close the writer
+            
+            
+            
             }
             
             
-        } catch (IOException ex) {
+            
+        } catch (IOException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MainWin.class.getName()).log(Level.SEVERE, null, ex);
         }
         

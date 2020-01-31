@@ -48,23 +48,12 @@ public class conn {
 	}
 	
 	// -------- Вывод таблицы--------
-	public static void ReadDB(String SQL) throws ClassNotFoundException, SQLException
+	public static ResultSet ReadDB(String SQL) throws ClassNotFoundException, SQLException
 	   {
-               statmt = conn.createStatement();
+                statmt = conn.createStatement();
 		resSet = statmt.executeQuery(SQL);
-		
-		while(resSet.next())
-		{
-			int id = resSet.getInt("id");
-			String  name = resSet.getString("name");
-			String  phone = resSet.getString("phone");
-	         System.out.println( "ID = " + id );
-	         System.out.println( "name = " + name );
-	         System.out.println( "phone = " + phone );
-	         System.out.println();
-		}	
-		
-		System.out.println("Таблица выведена");
+		return resSet;
+
 	    }
 	
 		// --------Закрытие--------
