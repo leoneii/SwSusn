@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import org.sqlite.JDBC;
 
 public class conn {
 	public static Connection conn;
@@ -21,10 +21,11 @@ public class conn {
 	public static void Conn() throws ClassNotFoundException, SQLException, IOException 
 	   {
 		   conn = null;
-		   Class.forName("org.sqlite.JDBC");
+		  Class.forName("org.sqlite.JDBC");
 		   conn = DriverManager.getConnection("jdbc:sqlite:"+AppSettings.getString("dbname", "susn.ixdb"));
 		   
 		   System.out.println("База Подключена!");
+                   swsusn.Message.showInfo("Успех!", "База данных подключена", null);
 	   }
 	
 	// --------Создание таблицы--------
@@ -47,9 +48,10 @@ public class conn {
 	}
 	
 	// -------- Вывод таблицы--------
-	public static void ReadDB() throws ClassNotFoundException, SQLException
+	public static void ReadDB(String SQL) throws ClassNotFoundException, SQLException
 	   {
-		resSet = statmt.executeQuery("SELECT * FROM users");
+               statmt = conn.createStatement();
+		resSet = statmt.executeQuery(SQL);
 		
 		while(resSet.next())
 		{
@@ -74,4 +76,23 @@ public class conn {
 			
 			System.out.println("Соединения закрыты");
 		   }
+                
+         public static String ReadNStr(int nstr, String table, String column) throws ClassNotFoundException, SQLException
+	   {
+               statmt = conn.createStatement();
+               resSet = statmt.executeQuery("SELECT "+column+" FROM "+table+";" );
+                int i = -1;
+               
+	      while (resSet.next()){
+                  
+                    i++;              
+                    if(i==nstr){
+                    return resSet.getString(column); 
+                       
+                    }
+              }
+              
+                    return "htyjntym"; 
+	    }
+                
 }
