@@ -77,6 +77,7 @@ public class FileOS {
         fileChooser.setFileFilter(fefilter);
         // Определение режима - 
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+  
         int result = fileChooser.showSaveDialog(parent);
         // Если директория выбрана, покажем ее в сообщении
         if (result == JFileChooser.APPROVE_OPTION ){
