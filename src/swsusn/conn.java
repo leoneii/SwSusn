@@ -57,14 +57,14 @@ public class conn {
 	    }
 	
 		// --------Закрытие--------
-		public static void CloseDB() throws ClassNotFoundException, SQLException
+	public static void CloseDB() throws ClassNotFoundException, SQLException
 		   {
 			conn.close();
 			statmt.close();
 			resSet.close();
 			
 			System.out.println("Соединения закрыты");
-		   }
+	   }
                 
          public static String ReadNStr(int nstr, String table, String column) throws ClassNotFoundException, SQLException
 	   {

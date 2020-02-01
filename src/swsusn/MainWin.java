@@ -6,6 +6,8 @@
 package swsusn;
 
 import com.opencsv.CSVWriter;
+import com.opencsv.CSVWriterBuilder;
+import com.opencsv.ICSVWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -13,6 +15,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static swsusn.conn.resSet;
+
+
 
 /**
  *
@@ -615,24 +619,30 @@ public class MainWin extends javax.swing.JFrame {
             String csv = swsusn.FileOS.saveFile("Выберите файл для экспорта", "csv","Файлы csv", jPanel1);
             //Create record 
             
-            CSVWriter writer = new CSVWriter(new FileWriter(csv));
+            //CSVWriter writer = new CSVWriter(new FileWriter(csv),);
+             CSVWriter writer = new CSVWriter(new FileWriter(csv), ';');
+            //com.opencsv.CSVWriterBuilder
             
-            ResultSet rs = conn.ReadDB("SELECT * FROM nomen;");
+           // CSVWriter.DEFAULT_SEPARATOR;
+            
+            ResultSet rs = conn.ReadDB("SELECT kod,nomen,cost,edz,tip FROM nomen;");
+            
+            writer.writeNext(("name,intcode,barcode,price,dept,tag,unit,").split(","));
+    
             while (rs.next()){
-                
-                
+ 
                 //Create record
-                String [] record = (rs.getString(1)+";"+rs.getString(2)+";"+rs.getString(3)+";"+rs.getString(4)+";"+rs.getString(5)+";").split(";");
-                
+            //    String [] record = (rs.getString(1)+";"+rs.getString(2)+";"+rs.getString(3)+";"+rs.getString(4)+";"+rs.getString(5)+";").split("");
+               
                 //Write the record to file
-                writer.writeNext(record);
-                //close the writer
-            
-            
-            
+                writer.writeNext((rs.getString(2)+";"+rs.getString(1)+";"+""+";"+rs.getString(3)+";"+String.valueOf((rs.getInt(5)+1)+";"+"1;"+rs.getString(4))).split(";"));
+                //close the writer          
+                
             }
             
+            writer.close();
             
+           swsusn.Message.showInfo("Успех!", "Выгружено", jPanel1); 
             
         } catch (IOException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MainWin.class.getName()).log(Level.SEVERE, null, ex);
